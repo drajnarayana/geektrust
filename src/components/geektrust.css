@@ -1,0 +1,73 @@
+.searchBar{
+    width:70%;
+    height:30px;
+}
+table{
+  /* border:1px solid teal; */
+  margin:auto;
+  width:70%;
+  margin-top: 20px;
+}
+tr {
+  height: 35px;
+  border: 1px solid teal;
+}
+.pagination{
+  display: flex;
+  width:30%;
+  /* border:1px solid teal; */
+  margin: auto;
+  margin-top: 25px;
+  justify-content: space-evenly;
+  
+}
+.firstPage{
+
+  width:45px;
+ background-color: #2DADFC;
+ padding: 2px;
+ color: white;
+  border-radius: 55px;
+}
+/* .secondPage{
+  width:45px;
+ background-color: #2DADFC;
+ padding: 2px;
+ color: white;
+  border-radius: 55px;
+}
+.thirdPage{
+  width:45px;
+  background-color: #2DADFC;
+  padding: 2px;
+  color: white;
+   border-radius: 55px;
+}
+.fourthPage{
+  width:45px;
+  background-color: #2DADFC;
+  padding: 2px;
+  color: white;
+   border-radius: 55px;
+} */
+
+.selected{
+  background-color: grey;
+}
+.notSelected{
+  background-color: none;
+}
+
+.deleteSelected {
+  height:40px;
+  width:20%;
+  /* border: 1px solid red; */
+}
+.deleteSelected button{
+  height:75%;
+  width:60%;
+background-color: #FF5171;
+color: white;
+border: none;
+border-radius: 25px;
+}
