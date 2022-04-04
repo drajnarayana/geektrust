@@ -7,10 +7,11 @@ table{
   margin:auto;
   width:70%;
   margin-top: 20px;
+  border-collapse: collapse;
 }
 tr {
   height: 35px;
-  border: 1px solid teal;
+  border-bottom: 1px solid grey;
 }
 .pagination{
   display: flex;
@@ -29,30 +30,18 @@ tr {
  color: white;
   border-radius: 55px;
 }
-/* .secondPage{
-  width:45px;
- background-color: #2DADFC;
- padding: 2px;
- color: white;
-  border-radius: 55px;
-}
-.thirdPage{
-  width:45px;
-  background-color: #2DADFC;
-  padding: 2px;
-  color: white;
-   border-radius: 55px;
-}
-.fourthPage{
-  width:45px;
-  background-color: #2DADFC;
-  padding: 2px;
-  color: white;
-   border-radius: 55px;
-} */
 
+.firstPage:hover{
+  cursor: pointer;
+}
+.previous{
+  cursor: pointer;
+}
+.next{
+  cursor: pointer;
+}
 .selected{
-  background-color: grey;
+  background-color: rgb(201, 201, 201);
 }
 .notSelected{
   background-color: none;
@@ -70,4 +59,8 @@ background-color: #FF5171;
 color: white;
 border: none;
 border-radius: 25px;
+}
+
+.deleteSelected button:hover{
+  cursor:pointer
 }

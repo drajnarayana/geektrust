@@ -6,13 +6,11 @@ export const GeekTrust=()=>{
     const [data,setData]=useState({admin:[]})
     const [pagesize,setPageSize]=useState({le:[]})
     const [page,setPage]=useState(1)
-   
+    
     
     useEffect(()=>{
-       
-       if(text!==""){
-      
-           let searchFilter=data.admin.filter((e)=>{
+       if(text!==""){   
+       let searchFilter=data.admin.filter((e)=>{
                return e.name.startsWith(text) || e.email.startsWith(text) || e.role.startsWith(text) 
            })
           setData({...data,admin:[...searchFilter]})
@@ -21,16 +19,21 @@ export const GeekTrust=()=>{
            getData()
        }
     },[text])
+
   useEffect(()=>{
     getFullData()
-       },[])
+      
+    },[])
+
+
     useEffect(()=>{
-        
-        getData ()
+    
+     getData (page)
 
     },[page])
+
     const getFullData=()=>{
-        axios.get("http://localhost:3001/admins")
+        axios.get("https://rajfakeserver.herokuapp.com/admins")
         .then(function(response){
             let size=Math.ceil((response.data.length)/10)
             let arraySize=[]
@@ -41,9 +44,9 @@ export const GeekTrust=()=>{
             setPageSize({...pagesize,le:[...arraySize]})
         })
     }
-    const getData=()=>{
+    const getData=(page)=>{
       
-      axios.get(`http://localhost:3001/admins?_page=${page}&_limit=10`)
+      axios.get(`https://rajfakeserver.herokuapp.com/admins?_page=${page}&_limit=10`)
       .then(function(response){
           
           setData({...data,admin:[...response.data]})
@@ -52,7 +55,7 @@ export const GeekTrust=()=>{
   
     const handleEdit=(id)=>{
         console.log(id)
-        axios.patch(`http://localhost:3001/admins/${id}`)
+        axios.patch(`https://rajfakeserver.herokuapp.com/admins/${id}`)
         .then(function(response){
             getFullData()
             getData()
@@ -60,7 +63,7 @@ export const GeekTrust=()=>{
     }
     const handleDelete=(id)=>{
        
-        axios.delete(`http://localhost:3001/admins/${id}`)
+        axios.delete(`https://rajfakeserver.herokuapp.com/admins/${id}`)
       .then(function(response){
           getFullData()
           getData()
@@ -69,11 +72,12 @@ export const GeekTrust=()=>{
     const handleCheck=(id,status)=>{
       let flag=status?false:true;
       
-        axios.patch(`http://localhost:3001/admins/${id}`,{status:flag})
+        axios.patch(`https://rajfakeserver.herokuapp.com/admins/${id}`,{status:flag})
         .then(function(response){
             getData()
         })
     }
+ 
     return(
         <>
         <h1>Admin UI</h1>
@@ -82,7 +86,7 @@ export const GeekTrust=()=>{
             <thead>
                 <tr>  
                     <th>
-                    <input type="checkbox" onClick={()=>{}}/>
+                    <input type="checkbox" />
                     </th>
                     <th>ID</th>
                     <th>Name</th>
@@ -97,7 +101,7 @@ export const GeekTrust=()=>{
             return (
               <tr key={index} className={e.status?"selected":"notSelected"}>
                 <td>
-                <input type="checkbox" onClick={()=>{handleCheck(e.id,e.status)}} checked={e.status}/>
+                <input type="checkbox" onClick={()=>{handleCheck(e.id,e.status)}} checked={e.status} readOnly/>
                 </td>
                 <td>{e.id}</td>
                 <td>{e.name}</td>
